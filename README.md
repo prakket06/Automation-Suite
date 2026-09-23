@@ -80,6 +80,6 @@ Before using the programme you will have to create a **config.env** file & confi
 <sup><i>File Organiser</i></sup>
 
 
-<img src="usage_preview.gif" alt="Fetch Weather Usage gif" width="80%" data-align = "center">
+<img src="Fetch Weather Usage.gif" alt="Fetch Weather Usage gif" width="80%" data-align = "center">
 
 <sup><i>Fetch Weather Usage</i></sup>
