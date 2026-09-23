@@ -2,7 +2,7 @@
 
 ## OVERVIEW
 
-This project is built to automate some daily tasks on your computer, like:-
+This project is built to automate some of the basic daily tasks on your computer, like:-
 
 1. **Organising files:** Automatically organise files in a folder based on the extension to subfolders.
 
@@ -14,11 +14,22 @@ This project is built to automate some daily tasks on your computer, like:-
 
 ## FEATURES
 
-1. **Automatic Path Handling:** Specify your parent directory, in the config file once, then for each use give the sub-paths only, the code will handle full path.
+1. **Automatic Path Handling:** Specify your parent directory, in the **config.env** file once, then for each use give the sub-paths only, the code will handle full path itself.
 
 2. **CSV Data Appending:** All your weather search history is saved in a local csv file, without getting overwritten in every use.
 
-3. **Safe & Concise E-mail:** A safe SMTP connection is established before logging in to your mail-id, then a concise mail telling number of files moved & last 5 weather entries is sent to you.
+3. **Safe & Concise E-mail:** A safe SMTP connection is established before logging in to your mail-id, then a concise mail telling number of files organised & last 5 weather entries is sent to you.
+
+4. **Streamlit Interactive Shell Dashboard:** An interactive graphic interface setup to interact with the app on browser graphically. The workspace breaks operations into dedicated, click-responsive navigation tabs (`📁 Organise Files`, `🌤️ Fetch Weather Data`, `📧 Send Email`) for clean, minimalistic space desktop management.
+
+---
+
+## SYSTEM CONTROL PANEL & DIAGNOSTICS
+
+The dashboard loads with an integrated pre-flight safety control panel pinned to the persistent left sidebar browser window. It acts defensively to scan deployment environments before any computational engine tasks execute:
+
+* **Configuration Status Check:** Instantly parses local workspace root trees to verify if the cryptographic credential parameters file (`config.env`) physically exists.
+* **Dependency Monitoring Array:** Runs a complete environmental module scan checking external required third-party installations (`requests`, `python-dotenv`, `pandas`). If any runtime modules are absent, the array flags the anomaly and visualizes the recovery script block.
 
 ---
 
@@ -26,16 +37,16 @@ This project is built to automate some daily tasks on your computer, like:-
 
 1. Make sure you have a **Python version 3.6+** installed.
 
-2. This project uses some external libraries to manage files, send mails, get weather data, etc. so download them before running the programme, by running following command in command prompt.
+2. This project uses some external libraries to manage files, send mails, get weather data, etc. so download them before running the programme, by running following command in terminal window.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-After installing libraries you can run the programme by using following command in you terminal.
+To boot the graphical web dashboard interface, execute the following custom run command in your terminal window:
 
 ```bash
-python main.py
+streamlit run app.py
 ```
 
 ---
@@ -58,4 +69,12 @@ Before using the programme you will have to create a **config.env** file & confi
 
 ## USAGE EXAMPLE
 
-![](C:\Users\Prakket\Desktop\Automation%20Suite\Usage%20Example.png)
+<img title="Home Page" src="file:///C:/Users/Prakket/Desktop/Automation Suite/Usage Example.png" alt="Home Page" data-align="center">
+
+<u>Home Page</u>
+
+
+
+<img title="" src="file:///C:/Users/Prakket/Desktop/Automation Suite/File Organiser.png" alt="" data-align="center">
+
+<u>File Organiser</u>

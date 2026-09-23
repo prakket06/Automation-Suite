@@ -41,18 +41,15 @@ def organize_files(folder):
                 os.makedirs(os.path.join(folder, dest), exist_ok = True)                                        # Create the destination folder if it doesn't exist.
                 shutil.move(os.path.join(folder, f), os.path.join(folder, dest))                                # Move the file to the destination folder.
                 moved_files[dest] = moved_files[dest] + 1 if dest in moved_files else 1
+        return True
     except FileNotFoundError:
         print(f"Folder not found: {folder}.")
-        return None
+        return False
     except Exception as e:
+        print("Something happened.")
         print(f"Error: {e}.")
         return None
-    
-    if (len(moved_files) > 0):
-        for folder, count in moved_files.items():
-            print(f"Moved {count} files to {folder}.")
-    else:
-        print(f"No files to move in {folder}.")
+
 
 
 def send_email(to, subject, body):
@@ -80,9 +77,10 @@ def send_email(to, subject, body):
         s.send_message(msg)                          # Send the email message using the SMTP connection.
         s.quit()                                    # Close the SMTP connection.
         print("Mail sent.")
+        return True
     except Exception as e:
         print(f"Error: {e}")
-        return None
+        return False
 
 def log_weather(city):
     """
@@ -113,14 +111,14 @@ def log_weather(city):
                 data = r.json()
                 writer.writerow([data["name"], data["main"]["temp"], data["weather"][0]["description"], datetime.datetime.now().strftime("%d %b, %Y %H:%M:%S")])
                 print(f"Weather logged for {city.title()}.")
-                return None
+                return True
         except Exception as e:
             print(f"Error writing to log file: {e}")
             return None
 
     elif r.status_code == 404:
         print(f"City not found: {city}.")
-
+        return False
     return None
 
 def fetch_weather_data():
@@ -215,4 +213,5 @@ def main():
         except Exception as e:
             print(f"Error: {e}. Try again.")
 
-main()
+if (__name__ == "__main__"):
+    main()

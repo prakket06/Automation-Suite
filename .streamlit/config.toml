@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#00D4FF"        # Futuristic neon blue for your primary action buttons
+backgroundColor = "#0B0F19"     # Deep space dark background
+secondaryBackgroundColor = "#161F33" # Subtle dark containers for layout zones
+textColor = "#E2E8F0"           # Crisp white/slate text for readability
+font = "sans serif"
