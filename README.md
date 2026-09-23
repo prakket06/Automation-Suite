@@ -71,15 +71,15 @@ Before using the programme you will have to create a **config.env** file & confi
 
 <img title="" src="Usage Example.png" alt="Home Page" data-align="center">
 
-<p style = "text-align: center"><u>Home Page</u></p>
+<sup><i>Home Page</i></sup>
 
 
 
 <img title="" src="File Organiser.png" alt="File Organiser" data-align="center">
 
-<p style = "text-align: center"><u>File Organiser</u></p>
+<sup><i>File Organiser</i></sup>
 
 
 <img src="usage_preview.gif" alt="Fetch Weather Usage gif" width="80%" data-align = "center">
-<br>
+
 <sup><i>Fetch Weather Usage</i></sup>
