@@ -76,16 +76,26 @@ with tab1:
     folder_name = st.text_input("Enter the name or path of the folder you want to organise:", placeholder="e.g. Documents\\MyFolder, Downloads, etc.")
 
     if (st.button("Organise Files", type = "primary", use_container_width = True)):
-        if folder_name:
-            organizing_status = organize_files(folder_name)
-            if organizing_status is True:
-                st.success(f"🟢 Files in {folder_name} have been organised successfully.")
-            elif organizing_status is False:
-                st.error(f"🔴 Folder not found: {folder_name}.")
-            else:
-                st.error(f"🔴 Failed to organise files in {folder_name}.")
+        # Organise files only if the app is running locally, not on a cloud server.
+        if "WEATHER_KEY" in st.secrets:
+            st.warning(
+                "⚠️ **Cloud Environment Restriction**\n\n"
+                "Since this application is currently hosted on a cloud server, it operates in an isolated sandbox "
+                "and cannot physically access your local system's file directory trees. "
+                "To utilize the automated File Organiser workspace, please download the repository files from my "
+                "[GitHub repository](https://github.com/prakket06/Automation-Suite) and execute the application suite locally on your machine!"
+            )
         else:
-            st.warning("🟡 Please enter a folder name first!!")
+            if folder_name:
+                organizing_status = organize_files(folder_name)
+                if organizing_status is True:
+                    st.success(f"🟢 Files in {folder_name} have been organised successfully.")
+                elif organizing_status is False:
+                    st.error(f"🔴 Folder not found: {folder_name}.")
+                else:
+                    st.error(f"🔴 Failed to organise files in {folder_name}.")
+            else:
+                st.warning("🟡 Please enter a folder name first!!")
 
 # Weather data fetcher tab.
 with tab2:
