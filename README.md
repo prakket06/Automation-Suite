@@ -69,12 +69,11 @@ Before using the programme you will have to create a **config.env** file & confi
 
 ## USAGE EXAMPLE
 
-<img title="Home Page" src="file:///C:/Users/Prakket/Desktop/Automation Suite/Usage Example.png" alt="Home Page" data-align="center">
+<img title="" src="Usage Example.png" alt="Home Page" data-align="center">
 
-<u>Home Page</u>
+<center><u>Home Page</u></center>
 
 
+<img title="" src="File Organiser.png" alt="File Organiser" data-align="center">
 
-<img title="" src="file:///C:/Users/Prakket/Desktop/Automation Suite/File Organiser.png" alt="" data-align="center">
-
-<u>File Organiser</u>
+<center><u>File Organiser</u></center>
