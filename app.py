@@ -23,12 +23,17 @@ st.sidebar.divider()
 
 # Check if the environment configuration file exists and show the target folder path.
 st.sidebar.subheader("🔌 Configuration Status")
-if os.path.exists("config.env"):
-    st.sidebar.success("config.env: Connected")
-    from main import MY_PATH
-    st.sidebar.info(f"📁 Target Root:\n`{MY_PATH}`")
+if os.path.exists("config.env") or ("WEATHER_KEY" in st.secrets):
+    st.sidebar.success("🔒 Configuration: Connected")
+    
+    # Handle path display depending on environment
+    if "WEATHER_KEY" in st.secrets:
+        st.sidebar.info("🌐 Running on Cloud Server\nUsing Secure Vault Environment")
+    else:
+        from main import MY_PATH
+        st.sidebar.info(f"📁 Target Root:\n`{MY_PATH}`")
 else:
-    st.sidebar.error("config.env: Missing")
+    st.sidebar.error("❌ Configuration: Missing")
 
 st.sidebar.divider()
 
