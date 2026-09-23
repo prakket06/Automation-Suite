@@ -14,11 +14,11 @@ This project is built to automate some daily tasks on your computer, like:-
 
 ## FEATURES
 
-1. **Automatic Path Handling:** Specify your parent directory, directly in the code once, then for each use give the sub-paths only, the code will handle full path.
+1. **Automatic Path Handling:** Specify your parent directory, in the config file once, then for each use give the sub-paths only, the code will handle full path.
 
 2. **CSV Data Appending:** All your weather search history is saved in a local csv file, without getting overwritten in every use.
 
-3. **Safe & Concise E-mail:** A safe SMTP connection is established before logging in to your mail-id, then a concise mail telling number of files moved & last 5 weather entries is send to you.
+3. **Safe & Concise E-mail:** A safe SMTP connection is established before logging in to your mail-id, then a concise mail telling number of files moved & last 5 weather entries is sent to you.
 
 ---
 
@@ -30,6 +30,11 @@ This project is built to automate some daily tasks on your computer, like:-
 
 ```bash
 pip install -r requirements.txt
+```
+
+After installing libraries you can run the programme by using following command in you terminal.
+
+```bash
 python main.py
 ```
 
@@ -43,7 +48,7 @@ Before using the programme you will have to create a **config.env** file & confi
 
 2. **EMAIL:** Your E-mail address.
 
-3. **APP_PASSWORD:** Your google account app password.
+3. **APP_PASSWORD:** Your google account apps password.
 
 4. **MY_PATH:** Your parent drive or directory path.
 
