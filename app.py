@@ -6,10 +6,92 @@ import pandas as pd
 
 # Configure the Streamlit page settings and layout.
 st.set_page_config(
-    page_title="Automation Suite",
-    page_icon="🤖⚡",
-    layout="centered",
-    initial_sidebar_state="expanded")
+    page_title = "Automation Suite",
+    page_icon = "🤖⚡",
+    layout = "centered",
+    initial_sidebar_state = "expanded")
+
+st.markdown(
+    """
+    <style>
+
+    /* Targets Streamlit blocks directly inside vertical containers. */
+    div[data-testid="stVerticalBlock"] > div[data-testid="stBlock"] {
+        border-radius: 12px; /* Rounds the block corners. */
+    }
+
+    /* Targets primary Streamlit buttons. */
+    div.stButton > button[kind="primary"] {
+        background: linear-gradient(135deg, #00D4FF 0%, #0088FF 100%); /* Adds the primary button gradient. */
+        color: #0B0F19 !important; /* Sets primary button label color. */
+        font-weight: 700 !important; /* Makes the primary label bold. */
+        border: none; /* Removes the default border. */
+        border-radius: 8px; /* Rounds the primary button corners. */
+        padding: 0.6rem 1.2rem; /* Adds vertical and horizontal button space. */
+        transition: all 0.25s ease; /* Smooths button state changes. */
+    }
+
+    /* Targets secondary Streamlit buttons. */
+    div.stButton > button[kind="secondary"] {
+        background-color: #161F33; /* Sets the secondary button background. */
+        color: #00D4FF !important; /* Sets secondary button label color. */
+        border: 1px solid #00D4FF40; /* Adds a translucent cyan border. */
+        border-radius: 8px; /* Rounds the secondary button corners. */
+        font-weight: 600 !important; /* Makes the secondary label semi-bold. */
+        transition: all 0.25s ease; /* Smooths button state changes. */
+    }
+
+    /* Targets primary buttons while the pointer is over them. */
+    div.stButton > button[kind="primary"]:hover {
+        transform: translateY(-2px); /* Moves the primary button upward. */
+        box-shadow: 0 6px 20px rgba(0, 212, 255, 0.35); /* Adds a cyan hover glow. */
+    }
+    
+    /* Targets secondary buttons while the pointer is over them. */
+    div.stButton > button[kind="secondary"]:hover {
+       background-color: #1E2D4A; /* Lightens the secondary background. */
+        border-color: #00D4FF; /* Brightens the secondary border. */
+        transform: translateY(-1px); /* Moves the secondary button upward. */
+    }
+
+    /* Targets paragraph text rendered inside every Streamlit button. */
+    div.stButton > button p {
+        color: #0B0F19 !important; /* Sets the default button label color. */
+        font-style: italic !important; /* Makes the button label italic. */
+        font-weight: 700 !important; /* Makes the button label bold. */
+        display: inline-block; /* Allows the text transform to apply. */
+        transform: skewX(-8deg); /* Slants the label when the font lacks italics. */
+    }
+
+    /* Targets paragraph text inside secondary button labels. */
+    div.stButton > button[kind="secondary"] p {
+        color: #00D4FF !important; /* Sets secondary label color to cyan. */
+    }
+
+    /* Targets placeholder text inside Streamlit text inputs. */
+    div[data-testid = "stTextInput"] input::placeholder {
+        display: inline-block; /* Allows the placeholder transform to apply. */
+        transform: skewX(-8deg); /* Slants the placeholder text. */
+    }
+
+    /* Targets inline code values inside Streamlit alert messages. */
+    div[data-testid="stAlert"] code {
+        background-color: #0B0F19 !important; /* Adds a dark code background. */
+        border-radius: 4px; /* Rounds the code background corners. */
+        padding: 0.1rem 0.35rem; /* Adds space around the code value. */
+        font-weight: 700; /* Makes the code value bold. */
+    }
+
+    /* Targets the currently selected Streamlit tab. */
+    .stTabs [aria-selected="true"] {
+        background-color: #162238 !important; /* Sets the active tab background. */
+        color: #00D4FF !important; /* Sets the active tab label color. */
+        border-color: #00D4FF80 !important; /* Sets the active tab border color. */
+    }    
+    </style>
+    """,
+    unsafe_allow_html = True
+)
 
 # Set the title and description of the main app page.
 st.title("🤖 Automation Suite")
@@ -79,7 +161,7 @@ with tab1:
         # Organise files only if the app is running locally, not on a cloud server.
         if "WEATHER_KEY" in st.secrets:
             st.warning(
-                "⚠️ **Cloud Environment Restriction**\n\n"
+                "🟡 **Cloud Environment Restriction**\n\n"
                 "Since this application is currently hosted on a cloud server, it operates in an isolated sandbox "
                 "and cannot physically access your local system's file directory trees. "
                 "To utilize the automated File Organiser workspace, please download the repository files from my "
@@ -89,11 +171,11 @@ with tab1:
             if folder_name:
                 organizing_status = organize_files(folder_name)
                 if organizing_status is True:
-                    st.success(f"🟢 Files in {folder_name} have been organised successfully.")
+                    st.success(f"🟢 Files in `{folder_name}` have been organised successfully.")
                 elif organizing_status is False:
-                    st.error(f"🔴 Folder not found: {folder_name}.")
+                    st.error(f"🔴 Folder not found: `{folder_name}`.")
                 else:
-                    st.error(f"🔴 Failed to organise files in {folder_name}.")
+                    st.error(f"🔴 Failed to organise files in `{folder_name}`.")
             else:
                 st.warning("🟡 Please enter a folder name first!!")
 
@@ -110,11 +192,11 @@ with tab2:
             if city:
                 fetch_status = log_weather(city)
                 if fetch_status is True:
-                    st.success(f"🟢 Weather data for {city.title()} has been fetched and logged successfully.")
+                    st.success(f"🟢 Weather data for `{city.title()}` has been fetched and logged successfully.")
                 elif fetch_status is False:
-                    st.error(f"🔴 City not found: {city.title()}.")
+                    st.error(f"🔴 City not found: `{city.title()}`.")
                 else:
-                    st.error(f"🔴 Failed to fetch weather data for {city.title()}.")
+                    st.error(f"🔴 Failed to fetch weather data for `{city.title()}`.")
             else:
                 st.warning("🟡 Please enter a city name first!!")
 
@@ -146,7 +228,7 @@ with tab2:
             if (os.path.exists(LOG_FILE)):
                 try:
                     df = pd.read_csv(LOG_FILE, names = ["City", "Temperature (°C)", "Weather Description", "Date & Time"])
-                    st.dataframe(df.iloc[::-1], use_container_width = True, hide_index = True)                                      # Reverse the dataframe to show the latest entry at the top.
+                    st.dataframe(df.iloc[::-1], use_container_width = True, hide_index = True)                                    # Reverse the dataframe to show the latest entry at the top.
                     button_label = "Hide Weather Log History" if st.session_state.show_history else "Show Weather Log History"
                 except Exception as e:
                     st.error(f"🔴 Could not load Log File: {e}")
@@ -167,6 +249,6 @@ with tab3:
             mail_status = send_email(EMAIL, "Automation Suite Status - Web App", email_body)
 
         if mail_status is True:
-            st.success(f"🟢 Execution report successfully dispatched to {EMAIL}!")
+            st.success(f"🟢 Execution report successfully dispatched to `{EMAIL}`!")
         else:
             st.error(f"🔴 Transmission failed. Verify your internet connection or check your Google App Password configuration.")

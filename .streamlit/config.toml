@@ -1,6 +1,35 @@
+[server]
+enableStaticServing = true
+
+[[theme.fontFaces]]
+family = "Michroma"
+url = "app/static/Michroma-Regular.ttf"
+
+[[theme.fontFaces]]
+family = "Space Grotesk"
+url = "app/static/SpaceGrotesk-VariableFont_wght.ttf"
+style = "normal"
+
+[[theme.fontFaces]]
+family = "Space Grotesk"
+url = "app/static/SpaceGrotesk-VariableFont_wght.ttf"
+style = "italic"
+
+[[theme.fontFaces]]
+family = "Space Grotesk"
+url = "app/static/SpaceGrotesk-VariableFont_wght.ttf"
+style = "bold"
+
+[[theme.fontFaces]]
+family = "Share Tech Mono"
+url = "app/static/ShareTechMono-Regular.ttf"
+style = "bold"
+
 [theme]
 primaryColor = "#00D4FF"        # Futuristic neon blue for your primary action buttons
 backgroundColor = "#0B0F19"     # Deep space dark background
 secondaryBackgroundColor = "#161F33" # Subtle dark containers for layout zones
 textColor = "#E2E8F0"           # Crisp white/slate text for readability
-font = "sans serif"
+headingFont = "Michroma"
+font = "Space Grotesk"
+codeFont = "Share Tech Mono"
