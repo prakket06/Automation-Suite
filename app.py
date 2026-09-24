@@ -165,7 +165,7 @@ with tab1:
                 "Since this application is currently hosted on a cloud server, it operates in an isolated sandbox "
                 "and cannot physically access your local system's file directory trees. "
                 "To utilize the automated File Organiser workspace, please download the repository files from my "
-                "[GitHub repository](https://github.com/prakket06/Automation-Suite) and execute the application suite locally on your machine!"
+                "[`GitHub repository`](https://github.com/prakket06/Automation-Suite) and execute the application suite locally on your machine!"
             )
         else:
             if folder_name:
