@@ -1,7 +1,7 @@
 # Importing necessary libraries.
 import os, importlib.util
 import streamlit as st
-from main import organize_files, log_weather, fetch_weather_data, generate_mail_body, send_email, EMAIL
+from main import organize_files, log_weather, fetch_weather_data, generate_mail_body, send_email, EMAIL, MY_PATH
 import pandas as pd
 
 # Configure the Streamlit page settings and layout.
@@ -112,7 +112,6 @@ if os.path.exists("config.env") or ("WEATHER_KEY" in st.secrets):
     if "WEATHER_KEY" in st.secrets:
         st.sidebar.info("🌐 Running on Cloud Server\nUsing Secure Vault Environment")
     else:
-        from main import MY_PATH
         st.sidebar.info(f"📁 Target Root:\n`{MY_PATH}`")
 else:
     st.sidebar.error("❌ Configuration: Missing")
