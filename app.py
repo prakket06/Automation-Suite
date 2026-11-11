@@ -1,5 +1,5 @@
 # Importing necessary libraries.
-import os, importlib.util
+import os, importlib.util, datetime
 import streamlit as st
 from main import organize_files, log_weather, fetch_weather_data, generate_mail_body, send_email, EMAIL, MY_PATH
 import pandas as pd
@@ -239,15 +239,20 @@ with tab3:
     st.header("📨 Status Email Sender")
     st.markdown("Send an email to yourself with the status of the automation suite, including the weather data of the last 5 entries and the file organisation status.")
 
+    user_email = st.text_input("Enter your email address to receive the status email:", placeholder="e.g., your.email@example.com")
+
     # Fetch the latest weather data and generate the email body before sending.
     weather_data = fetch_weather_data()
     email_body = generate_mail_body(weather_data)
 
     if st.button("Send Status Email", type = "primary", use_container_width = True):
-        with st.spinner("Establishing secure connection to SMTP server..."):
-            mail_status = send_email(EMAIL, "Automation Suite Status - Web App", email_body)
-
-        if mail_status is True:
-            st.success(f"🟢 Execution report successfully dispatched to `{EMAIL}`!")
+        if not user_email:
+            st.warning("🟡 Please enter your email address first!!")
         else:
-            st.error(f"🔴 Transmission failed. Verify your internet connection or check your Google App Password configuration.")
+            with st.spinner("Establishing secure connection to SMTP server..."):
+                mail_status = send_email(user_email, f"Automation Suite Status - Web App - {datetime.datetime.now().strftime('%d %b %H:%M')}", email_body)
+
+            if mail_status is True:
+                st.success(f"🟢 Execution report successfully dispatched to `{user_email}`!")
+            else:
+                st.error(f"🔴 Transmission failed. Verify your internet connection.")

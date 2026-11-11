@@ -65,14 +65,16 @@ def send_email(to, subject, body):
         None
     """
 
+    to = to.strip()  # Remove any leading or trailing whitespace from the email address.
     try:
         s = smtplib.SMTP("smtp.gmail.com", 587)     # Create a SMTP connection to Gmail's SMTP server on port 587.
         s.starttls()                                 # Upgrade the connection to a secure encrypted SSL/TLS connection.
-        s.login(to, APP_PASSWORD)                    # Login to the Gmail account using the provided email address and app password.
+        s.login(EMAIL, APP_PASSWORD)                 # Login to the Gmail account using the provided email address and app password.
         msg = EmailMessage()                        # Create a new email message object.
         msg["Subject"] = subject                     # Set the subject of the email.
-        msg["From"] = to                            # Set the sender's email address.
+        msg["From"] = f"Automation Suite <{EMAIL}>"  # Set the sender's email address.
         msg["To"] = to                              # Set the recipient's email address, which is the same as the sender's email address.
+        msg["Reply-To"] = EMAIL                     # Set the reply-to email address, which is the same as the sender's email address.
         msg.set_content(body)                         # Set the body of the email.
         s.send_message(msg)                          # Send the email message using the SMTP connection.
         s.quit()                                    # Close the SMTP connection.
